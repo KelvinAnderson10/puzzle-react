@@ -7,11 +7,11 @@ const grid = [
   [0,0,0,0,0,0,0,3],
   [1,1,1,1,2,1,1,1],
   [1,0,0,0,0,1,0,0],
-  [1,2,1,1,1,1,0,0],
+  [4,2,1,1,1,1,0,0],
   [0,0,0,0,0,1,1,0],
   [0,0,0,0,0,0,1,1],
   [0,0,0,0,0,0,0,1],
-  [4,1,1,1,1,1,1,1]
+  [1,1,1,1,1,1,1,1]
 ]
 
 const Tile = ({ type, id }) => {
@@ -35,22 +35,21 @@ const Tile = ({ type, id }) => {
 
 const App = () => {
   const [appState, setAppState] = useState(grid);
-  const [row, setRow] = useState(7)
-  const [col, setCol] = useState(0)
-  const [prevRow, setPrevRow] = useState(7)
-  const [prevCol, setPrevCol] = useState(0)
+  const [row, setRow] = useState()
+  const [col, setCol] = useState()
   const [score, setScore] = useState(1000)
-  const [isFinish, setIsFinish] = useState(false)
   const [scoreFinal, setScoreFinal] = useState()
 
 
-  // useEffect(() => {
-  //   let tempGrid = appState
-  //   // tempGrid[prevRow][prevCol] = 1
-  //   tempGrid[row][col] = 4
-  //   setAppState(tempGrid)
-  //   console.log(appState)
-  // }, [row, col, prevCol, prevRow, appState, ehKetekan])
+  useEffect(()=> {
+    for (let i = 0; i< appState.length; i++){
+      const isCheckpoint = (element) => element == 4;
+      if (appState[i].findIndex(isCheckpoint) != -1){
+        setRow(i)
+        setCol(appState[i].findIndex(isCheckpoint));
+      }
+    }
+  }, [])
 
 
   const handleOnChange = (e) => {
@@ -65,7 +64,6 @@ const App = () => {
             setScore(score+30)
           }
           else if (appState[row][col + 1] == 3){
-            setIsFinish(true)
             setAppState([])
             setScoreFinal(score)
             return
@@ -88,7 +86,6 @@ const App = () => {
             setScore(score+30)
           }
           else if (appState[row][col - 1] == 3){
-            setIsFinish(true)
             setAppState([])
             setScoreFinal(score)
             return
@@ -110,7 +107,6 @@ const App = () => {
             setScore(score+30)
           }
           else if (appState[row+1][col] == 3){
-            setIsFinish(true)
             setAppState([])
             setScoreFinal(score)
             return
@@ -134,7 +130,6 @@ const App = () => {
             setScore(score+30)
           }
           else if (appState[row-1][col] == 3){
-            setIsFinish(true)
             setAppState([])
             setScoreFinal(score)
             return
