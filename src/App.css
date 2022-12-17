@@ -2,6 +2,70 @@
   text-align: center;
 }
 
+.container-fluid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+table, tbody, tr, td{
+  border: 1px solid black;
+}
+
+#up{
+  width: 5vw;
+  height: 5vh;
+}
+
+#down{
+  width: 5vw;
+  height: 5vh;
+}
+
+#left{
+  width: 5vw;
+  height: 5vh;
+}
+
+#right{
+  width: 5vw;
+  height: 5vh;
+}
+
+
+
+.block{
+  background-color: gray;
+  width: 5vw;
+  height: 5vh;
+}
+
+.path{
+  background-color: white;
+  width: 5vw;
+  height: 5vh;
+}
+
+.bonus{
+  background-color: yellow;
+  width: 5vw;
+  height: 5vh;
+}
+
+.finish{
+  background-color: red;
+  width: 5vw;
+  height: 5vh;
+}
+
+.character{
+  background-color: blue;
+  width: 5vw;
+  height: 5vh;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
